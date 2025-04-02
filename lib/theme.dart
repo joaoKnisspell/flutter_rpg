@@ -11,4 +11,32 @@ class AppColors {
   static Color highlightColor = const Color.fromRGBO(212, 172, 13, 1);
 }
 
-ThemeData primaryTheme = ThemeData();
+ThemeData primaryTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    backgroundColor: AppColors.secondaryColor,
+    centerTitle: true,
+  ),
+  textTheme: TextTheme(
+    bodyMedium: TextStyle(
+      color: AppColors.textColor,
+      fontSize: 14,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 16,
+      color: AppColors.textColor,
+      letterSpacing: 1,
+    ),
+    titleMedium: TextStyle(
+      color: AppColors.titleColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 16,
+      letterSpacing: 1,
+    ),
+  ),
+  cardTheme: CardTheme(
+    color: AppColors.secondaryColor.withOpacity(0.5),
+    shadowColor: Colors.transparent,
+    margin: const EdgeInsets.only(bottom: 16),
+    shape: const RoundedRectangleBorder(),
+  ),
+);

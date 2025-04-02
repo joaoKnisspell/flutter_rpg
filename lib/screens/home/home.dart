@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_app/shared/widgets/styled_card.dart';
+import 'package:rpg_app/shared/widgets/styled_text.dart';
+import 'package:rpg_app/theme.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,24 +11,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> characters = ['Mario', 'Luigi', 'Batman', 'Iron Man', 'Flash'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[850],
-        centerTitle: true,
-        title: Text(
-          "YOUR CARACTERS",
-          style: TextStyle(
-            color: Colors.grey[350],
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            letterSpacing: 1,
-          ),
-        ),
+        title: const StyledTitle("Your Characters"),
       ),
       body: Container(
-        color: Colors.grey[900],
+        color: AppColors.secondaryAccent,
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: characters.length,
+                itemBuilder: (_, index) {
+                  return StyledCard(name: characters[index]);
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
