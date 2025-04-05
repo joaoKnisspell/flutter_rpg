@@ -29,7 +29,7 @@ ThemeData primaryTheme = ThemeData(
     titleMedium: TextStyle(
       color: AppColors.titleColor,
       fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontSize: 14,
       letterSpacing: 1,
     ),
   ),

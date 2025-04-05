@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_app/models/character_model.dart';
 import 'package:rpg_app/shared/widgets/styled_card.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
 import 'package:rpg_app/theme.dart';
@@ -11,8 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> characters = ['Mario', 'Luigi', 'Batman', 'Iron Man', 'Flash'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +27,7 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 itemCount: characters.length,
                 itemBuilder: (_, index) {
-                  return StyledCard(name: characters[index]);
+                  return StyledCard(character: characters[index]);
                 },
               ),
             )
