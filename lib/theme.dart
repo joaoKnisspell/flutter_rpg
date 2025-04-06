@@ -19,12 +19,13 @@ ThemeData primaryTheme = ThemeData(
   textTheme: TextTheme(
     bodyMedium: TextStyle(
       color: AppColors.textColor,
-      fontSize: 14,
+      fontSize: 12,
     ),
     headlineMedium: TextStyle(
-      fontSize: 16,
+      fontSize: 12,
       color: AppColors.textColor,
       letterSpacing: 1,
+      fontWeight: FontWeight.bold,
     ),
     titleMedium: TextStyle(
       color: AppColors.titleColor,
@@ -38,5 +39,10 @@ ThemeData primaryTheme = ThemeData(
     shadowColor: Colors.transparent,
     margin: const EdgeInsets.only(bottom: 16),
     shape: const RoundedRectangleBorder(),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: AppColors.secondaryColor,
+    border: InputBorder.none,
   ),
 );
