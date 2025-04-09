@@ -13,9 +13,11 @@ class AppColors {
 
 ThemeData primaryTheme = ThemeData(
   appBarTheme: AppBarTheme(
-    backgroundColor: AppColors.secondaryColor,
-    centerTitle: true,
-  ),
+      backgroundColor: AppColors.secondaryColor,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: AppColors.textColor,
+      )),
   textTheme: TextTheme(
     bodyMedium: TextStyle(
       color: AppColors.textColor,
