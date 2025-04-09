@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_app/models/vocations_enum.dart';
+import 'package:rpg_app/shared/styled_button.dart';
 import 'package:rpg_app/shared/widgets/styled_section_divider.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
 import 'package:rpg_app/shared/widgets/styled_vocation_card.dart';
@@ -13,6 +14,10 @@ class NewCharacter extends StatefulWidget {
 }
 
 class _NewCharacterState extends State<NewCharacter> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _sloganController = TextEditingController();
+  VocationsEnum selectedVocation = VocationsEnum.terminalRaider;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +34,7 @@ class _NewCharacterState extends State<NewCharacter> {
                     title: 'Welcome New Player.',
                     subtitle: 'Create a name & slogan for your character.'),
                 TextField(
+                  controller: _nameController,
                   style: TextStyle(
                     color: AppColors.textColor,
                   ),
@@ -41,6 +47,7 @@ class _NewCharacterState extends State<NewCharacter> {
                   height: 10,
                 ),
                 TextField(
+                  controller: _sloganController,
                   style: TextStyle(
                     color: AppColors.textColor,
                   ),
@@ -54,18 +61,49 @@ class _NewCharacterState extends State<NewCharacter> {
                   title: 'Choose a Vocation',
                   subtitle: 'This determines your available skills.',
                 ),
-                const StyledVocationCard(vocation: VocationsEnum.algoWizard),
-                const StyledVocationCard(vocation: VocationsEnum.codeJunkie),
-                const StyledVocationCard(
-                    vocation: VocationsEnum.terminalRaider),
-                const StyledVocationCard(vocation: VocationsEnum.uxNinja),
+                StyledVocationCard(
+                  vocation: VocationsEnum.algoWizard,
+                  isSelected: selectedVocation == VocationsEnum.algoWizard,
+                  onTap: () {
+                    setState(() {
+                      selectedVocation = VocationsEnum.algoWizard;
+                    });
+                  },
+                ),
+                StyledVocationCard(
+                  vocation: VocationsEnum.codeJunkie,
+                  isSelected: selectedVocation == VocationsEnum.codeJunkie,
+                  onTap: () {
+                    setState(() {
+                      selectedVocation = VocationsEnum.codeJunkie;
+                    });
+                  },
+                ),
+                StyledVocationCard(
+                  vocation: VocationsEnum.terminalRaider,
+                  isSelected: selectedVocation == VocationsEnum.terminalRaider,
+                  onTap: () {
+                    setState(() {
+                      selectedVocation = VocationsEnum.terminalRaider;
+                    });
+                  },
+                ),
+                StyledVocationCard(
+                  vocation: VocationsEnum.uxNinja,
+                  isSelected: selectedVocation == VocationsEnum.uxNinja,
+                  onTap: () {
+                    setState(() {
+                      selectedVocation = VocationsEnum.uxNinja;
+                    });
+                  },
+                ),
                 const StyledSectionDivider(
                   title: 'GOOD LUCK.',
                   subtitle: 'And enjoy the journey...',
                 ),
-                FilledButton(
+                StyledButton(
                   onPressed: () {},
-                  child: const Text('Create Character'),
+                  text: 'Create Character',
                 )
               ],
             ),

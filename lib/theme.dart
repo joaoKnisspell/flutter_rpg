@@ -23,9 +23,9 @@ ThemeData primaryTheme = ThemeData(
       color: AppColors.textColor,
       fontSize: 12,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: const TextStyle(
       fontSize: 12,
-      color: AppColors.textColor,
+      color: Colors.white,
       letterSpacing: 1,
       fontWeight: FontWeight.bold,
     ),

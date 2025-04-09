@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_app/models/character_model.dart';
+import 'package:rpg_app/screens/newCharacter/new_character.dart';
+import 'package:rpg_app/shared/styled_button.dart';
 import 'package:rpg_app/shared/widgets/styled_card.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
 import 'package:rpg_app/theme.dart';
@@ -30,6 +32,17 @@ class _HomeState extends State<Home> {
                   return StyledCard(character: characters[index]);
                 },
               ),
+            ),
+            StyledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => const NewCharacter(),
+                  ),
+                );
+              },
+              text: 'Create Character',
             )
           ],
         ),
