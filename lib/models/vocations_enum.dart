@@ -1,5 +1,5 @@
 enum VocationsEnum {
-  algoWizard(
+  terminalRaider(
     title: "Terminal Raider",
     description: "Adept in terminal commands to trigger traps.",
     weapon: "Terminal",
@@ -13,14 +13,14 @@ enum VocationsEnum {
     ability: "Higher Order Overdrive",
     image: "code_junkie.jpg",
   ),
-  terminalRaider(
+  uxNinja(
     title: "UX Ninja",
     description: "Uses quick & stealthy visual attacks.",
     weapon: "Infused Stylus",
     ability: "Triple Swipe",
     image: "ux_ninja.jpg",
   ),
-  uxNinja(
+  algoWizard(
     title: "Algo Wizard",
     description: "Carries a staff to unleash algorithm magic.",
     weapon: "Crystal Staff",

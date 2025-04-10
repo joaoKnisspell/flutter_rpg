@@ -17,7 +17,7 @@ class _StatsTableState extends State<StatsTable> {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.secondaryColor,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: [
           Icon(

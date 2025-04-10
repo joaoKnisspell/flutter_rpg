@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_app/models/character_model.dart';
 import 'package:rpg_app/models/vocations_enum.dart';
+import 'package:rpg_app/screens/home/home.dart';
 import 'package:rpg_app/shared/styled_button.dart';
 import 'package:rpg_app/shared/widgets/styled_section_divider.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
 import 'package:rpg_app/shared/widgets/styled_vocation_card.dart';
 import 'package:rpg_app/theme.dart';
+import 'package:uuid/uuid.dart';
+
+const uuid = Uuid();
 
 class NewCharacter extends StatefulWidget {
   const NewCharacter({super.key});
@@ -16,7 +21,27 @@ class NewCharacter extends StatefulWidget {
 class _NewCharacterState extends State<NewCharacter> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sloganController = TextEditingController();
-  VocationsEnum selectedVocation = VocationsEnum.terminalRaider;
+  VocationsEnum selectedVocation = VocationsEnum.algoWizard;
+
+  void handleAddCharacter() {
+    if (_nameController.text.isNotEmpty && _sloganController.text.isNotEmpty) {
+      setState(() {
+        CharacterModel newCharacter = CharacterModel(
+          id: uuid.v4(),
+          name: _nameController.text,
+          slogan: _sloganController.text,
+          vocation: selectedVocation,
+        );
+        characters.add(newCharacter);
+      });
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (ctx) => const Home(),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +127,7 @@ class _NewCharacterState extends State<NewCharacter> {
                   subtitle: 'And enjoy the journey...',
                 ),
                 StyledButton(
-                  onPressed: () {},
+                  onPressed: handleAddCharacter,
                   text: 'Create Character',
                 )
               ],
