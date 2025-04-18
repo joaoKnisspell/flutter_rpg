@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rpg_app/models/character_model.dart';
 import 'package:rpg_app/models/vocations_enum.dart';
 import 'package:rpg_app/screens/home/home.dart';
+import 'package:rpg_app/services/character_model.dart';
 import 'package:rpg_app/shared/styled_button.dart';
 import 'package:rpg_app/shared/widgets/styled_section_divider.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
@@ -32,7 +34,8 @@ class _NewCharacterState extends State<NewCharacter> {
           slogan: _sloganController.text,
           vocation: selectedVocation,
         );
-        characters.add(newCharacter);
+        Provider.of<CharacterStore>(context, listen: false)
+            .addCharacter(newCharacter);
       });
       Navigator.push(
         context,

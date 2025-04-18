@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rpg_app/models/character_model.dart';
 import 'package:rpg_app/screens/newCharacter/new_character.dart';
+import 'package:rpg_app/services/character_model.dart';
 import 'package:rpg_app/shared/styled_button.dart';
 import 'package:rpg_app/shared/widgets/styled_card.dart';
 import 'package:rpg_app/shared/widgets/styled_text.dart';
@@ -26,10 +28,14 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (_, index) {
-                  return StyledCard(character: characters[index]);
+              child: Consumer<CharacterStore>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.characters.length,
+                    itemBuilder: (_, index) {
+                      return StyledCard(character: value.characters[index]);
+                    },
+                  );
                 },
               ),
             ),
