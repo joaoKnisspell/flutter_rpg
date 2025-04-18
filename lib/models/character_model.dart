@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rpg_app/models/skill_model.dart';
 import 'package:rpg_app/models/stats_mixin.dart';
 import 'package:rpg_app/models/vocations_enum.dart';
@@ -7,7 +8,7 @@ class CharacterModel with Stats {
   final String name;
   final String slogan;
   final VocationsEnum vocation;
-  final Set<SkillModel> skill = {};
+  final Set<SkillModel> skills = {};
 
   CharacterModel({
     required this.id,
@@ -25,8 +26,44 @@ class CharacterModel with Stats {
   }
 
   void addSkill(SkillModel newSkill) {
-    skill.clear();
-    skill.add(newSkill);
+    skills.clear();
+    skills.add(newSkill);
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'name': name,
+      'slogan': slogan,
+      'vocation': vocation.toString(),
+      'isFav': _isFav,
+      'skills': skills.map((s) => s.id).toList(),
+      'stats': statsAsMap,
+    };
+  }
+
+  factory CharacterModel.fromFirestore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions options) {
+    final data = snapshot.data()!;
+
+    CharacterModel character = CharacterModel(
+      id: data['id'],
+      name: data['name'],
+      slogan: data['slogan'],
+      vocation: VocationsEnum.values
+          .firstWhere((v) => v.toString() == data['vocation']),
+    );
+
+    if (data['isFav'] == true) {
+      character.toggleIsFav();
+    }
+
+    for (String id in data['skills']) {
+      SkillModel curSkill = allSkills.firstWhere((s) => s.id == id);
+      character.addSkill(curSkill);
+    }
+
+    return character;
   }
 }
 
