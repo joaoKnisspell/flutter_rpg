@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rpg_app/screens/home/home.dart';
-import 'package:rpg_app/services/character_model.dart';
+import 'package:rpg_app/services/character_store.dart';
 import 'package:rpg_app/theme.dart';
 
 // firebase

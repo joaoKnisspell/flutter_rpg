@@ -43,7 +43,7 @@ class CharacterModel with Stats {
 
   factory CharacterModel.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions options) {
+      SnapshotOptions? options) {
     final data = snapshot.data()!;
 
     CharacterModel character = CharacterModel(
